@@ -21,3 +21,7 @@ def list_stdev(L):
     mean = sum_of_data / num_entries
     stdev = math.sqrt(sum([(mean-x)**2 for x in L]) / len(L))
     return stdev
+
+
+if __name__ == '__main__':
+    main()
