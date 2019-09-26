@@ -1,9 +1,5 @@
 # test-driven-dev
 Test Driven Development
 
-get_data_update Branch
-- updated get_data.py to include the function read_stdin_col
-- read_stdin_col will read standard input and return a column specified by the
-user
-- could not figureout how to pass standard input in python unittest. will
-update this later
+get_data_update2 Branch
+- Altered read_stdin_col() to make it more efficient
