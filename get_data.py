@@ -1,7 +1,5 @@
 import sys
 import select
-import numpy as np
-import pandas as pd
 
 
 def read_stdin_col(col_num):
@@ -12,27 +10,21 @@ def read_stdin_col(col_num):
     if select.select([sys.stdin, ], [], [], 0.0)[0]:
         pass
     else:
-        print('Error: There is no standard input', file=sys.stderr)
+        print('Error: There is no standard input or input is incorrect form',
+              file=sys.stderr)
         sys.exit(1)
 #    #read data from standard input
-    f = sys.stdin.read()
-#    split the data by return
-    ff = f.strip().split('\n')
-#   convert the data to a numpy array
-    npff = np.array(ff)
     col_data = []
-    for line in npff:
-        type = line.split()
-
+    for l in sys.stdin:
+        A = l.rstrip().split()
         try:
-            working_col_data = int(type[col_num])
+            col_data.append(A[col_num])
         except IndexError:
             print('Error: column number not in dataframe', file=sys.stderr)
             sys.exit(1)
-        col_data.append(working_col_data)
-
+    print(col_data)
     return col_data
 
 
-test_column = 1
+test_column = 0
 read_stdin_col(test_column)
