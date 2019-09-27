@@ -11,19 +11,34 @@ class TestColumn(unittest.TestCase):
         file_mean = ml.list_mean(self.file_int)
         self.assertEqual(file_mean, self.direct_mean_int)
 
-    def test_stdev(self):
-        file_stdev = ml.list_stdev(self.file_int)
-        self.assertEqual(file_stdev, self.direct_stdev_int)
-
     def test_mean_with_NaNs(self):
         bad_file = [2, 2, 2, 2, 2, 2, 'NaN']
         with self.assertRaises(TypeError):
+            ml.list_mean(bad_file)
+
+    def test_mean_with_no_entries(self):
+        bad_file = []
+        with self.assertRaises(ZeroDivisionError):
             ml.list_mean(bad_file)
 
     def test_mean_with_non_int(self):
         bad_file = [2, 2, 'q', 2, 'a', 2]
         with self.assertRaises(TypeError):
             ml.list_mean(bad_file)
+
+    def test_mean_with_string_entries(self):
+        bad_file = ['a', 'b', 'c']
+        with self.assertRaises(TypeError):
+            ml.list_mean(bad_file)
+
+    def test_mean_with_unstructured_entries(self):
+        bad_file = ['a', 'b', 'c']
+        with self.assertRaises(TypeError):
+            ml.list_mean(bad_file)
+
+    def test_stdev(self):
+        file_stdev = ml.list_stdev(self.file_int)
+        self.assertEqual(file_stdev, self.direct_stdev_int)
 
     def test_stdev_with_NaNs(self):
         bad_file = [2, 2, 2, 2, 2, 2, 'NaN']
@@ -35,14 +50,19 @@ class TestColumn(unittest.TestCase):
         with self.assertRaises(TypeError):
             ml.list_stdev(bad_file)
 
-    def test_mean_with_no_entries(self):
-        bad_file = []
-        with self.assertRaises(ZeroDivisionError):
-            ml.list_mean(bad_file)
-
     def test_stdev_with_no_entries(self):
         bad_file = []
         with self.assertRaises(ZeroDivisionError):
+            ml.list_stdev(bad_file)
+
+    def test_stdev_with_string_entries(self):
+        bad_file = ['a', 'b', 'c']
+        with self.assertRaises(TypeError):
+            ml.list_stdev(bad_file)
+
+    def test_stdev_with_unstructured_entries(self):
+        bad_file = ['a', 'b', 'c']
+        with self.assertRaises(TypeError):
             ml.list_stdev(bad_file)
 
     def setUp(self):
