@@ -18,13 +18,8 @@ def read_stdin_col(col_num):
     for l in sys.stdin:
         A = l.rstrip().split()
         try:
-            col_data.append(A[col_num])
+            col_data.append(int(A[col_num]))
         except IndexError:
             print('Error: column number not in dataframe', file=sys.stderr)
             sys.exit(1)
-    print(col_data)
     return col_data
-
-
-test_column = 0
-read_stdin_col(test_column)
