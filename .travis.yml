@@ -16,9 +16,9 @@ script:
     - python test_viz.py
     - python math_lib_unittest.py
     - pycodestyle math_lib.py
-    - pycodestyle _math_lib_unittest.py
+    - pycodestyle math_lib_unittest.py
     - pycodestyle get_data.py
     - python data_viz_unittest.py
     - pycodestyle data_viz.py
-    - pycodestyle data_viz.unittest.py
+    - pycodestyle data_viz_unittest.py
     - pycodestyle viz.py
